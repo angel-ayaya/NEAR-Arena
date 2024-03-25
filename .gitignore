@@ -1,0 +1,24 @@
+# Carpeta de compilación
+contract_as/build
+
+# Archivos generados por el compilador
+contract_as/*.wasm
+contract_as/*.wasm.map
+
+# Dependencias
+contract_as/node_modules
+
+# Archivos de respaldo
+contract_as*.bak
+contract_as*.swp
+contract_as*~
+
+# Archivos de configuración local
+contract_as.env
+contract_as.env.local
+contract_as.env.*.local
+
+# Archivos de registro
+contract_asnpm-debug.log*
+contract_asyarn-debug.log*
+contract_asyarn-error.log*
