@@ -50,7 +50,7 @@ export function joinTournament(tournamentId: string): void {
   assert(tournament.isActive, "El torneo no está activo.");
   // Validate that the tournament is not full.
   assert(
-    tournament.participants.length < tournament.totalParticipants,
+    u32(tournament.participants.length) < tournament.totalParticipants,
     "El torneo está lleno."
   );
   // Validate that the user is not already a participant.
