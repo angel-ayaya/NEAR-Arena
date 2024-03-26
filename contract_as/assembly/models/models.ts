@@ -50,6 +50,7 @@ export class Tournament {
   totalMatches: u32;
   matches: PersistentVector<Match>; // 
   isActive: bool;
+  isStarted: bool;
 
   constructor(
     id: string,
@@ -69,6 +70,7 @@ export class Tournament {
     this.totalParticipants = totalParticipants;
     this.totalMatches = this.calcTotalMatches(totalParticipants);
     this.isActive = true;
+    this.isStarted = false;
     this.matches = new PersistentVector<Match>(id + "_m"); // Inicializar el vector de partidos
   }
 

@@ -79,5 +79,30 @@ function isParticipantRegistered(
   return false;
 }
 
+
+// Manage Tournaments
+export function startTournament(tournamentId: string): void {
+    const tournament = tournaments.getSome(tournamentId);
+    assert(
+      tournament.creator == context.sender,
+      "Solo el creador del torneo puede iniciar el torneo."
+    );
+    assert(
+      tournament.participants.length >= tournament.minParticipants,
+      "No se ha alcanzado el mínimo de participantes."
+    );
+    tournament.isActive = true;
+    tournaments.set(tournamentId, tournament);
+  }
+
+export function deleteTournament(tournamentId: string): void {
+    const tournament = tournaments.getSome(tournamentId);
+    assert(
+      tournament.creator == context.sender,
+      "Solo el creador del torneo puede eliminarlo."
+    );
+    // Opcional: Devolver NEAR a los participantes antes de eliminar el torneo.
+    tournaments.delete(tournamentId);
+  }
 // near call contractor1.testenoid.testnet createTournament '{"id": "2", "name": "Torneo de prueba", "prizePool": "1000000000000000000000000", "imageUrl": "https://example.com/image.jpg"}' --depositYocto=1000000000000000000000000 --accountId testenoid.testnet
 // near call contractor1.testenoid.testnet getTournament '{"id": "2"}' --accountId testenoid.testnet
